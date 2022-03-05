@@ -1,0 +1,34 @@
+<ion-grid>
+    <ion-row *ngFor="let alumno of alumnos">
+        <ion-col>
+            <ion-card>
+                <ion-card-content>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col>
+                                <ion-grid >
+                                    <ion-row>
+                                        <ion-col sizeLg="4" size="12">Nombre:</ion-col>
+                                        <ion-col sizeLg="4" size="12"><strong>{{alumno.nombre}}</strong></ion-col>
+                                    </ion-row>
+                                    <ion-row>
+                                        <ion-col sizeLg="4" size="12">Apellido:</ion-col>
+                                        <ion-col sizeLg="4" size="12"><strong>{{alumno.apellido}}</strong></ion-col>
+                                    </ion-row>
+                                    <ion-row>
+                                        <ion-col sizeLg="4" size="12">Matricula:</ion-col>
+                                        <ion-col sizeLg="4" size="12"><strong>{{alumno.matricula}}</strong></ion-col>
+                                    </ion-row>
+                                </ion-grid>
+                            </ion-col>
+                            <ion-col class="logo">
+                                <img src="assets/imagenes/logo-fcfm.png" alt="" width="120px">
+                            </ion-col>
+
+                        </ion-row>
+                    </ion-grid>
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-grid>
