@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Input} from '@angular/core';
 
 @Component({
   selector: 'app-alumnos',
@@ -11,6 +11,21 @@ export class AlumnosComponent implements OnInit {
 
   alumnos = [
     {
+      "nombre": "Abraham",
+      "apellido": "Ramirez",
+      "matricula": "ABC123"
+    },
+    {
+      "nombre": "Abraham",
+      "apellido": "Ramirez",
+      "matricula": "ABC123"
+    },
+    {
+      "nombre": "Abraham",
+      "apellido": "Ramirez",
+      "matricula": "ABC123"
+    },
+    {
         "nombre": "Abraham",
         "apellido": "Ramirez",
         "matricula": "ABC123"
@@ -19,4 +34,16 @@ export class AlumnosComponent implements OnInit {
   ngOnInit(): void {
   }
 
+    @Input() nombreAlumno: string=""
+    @Input() apellidoAlumno: string=""
+    @Input() matriculaAlumno: string=""
+
+    agregarAlumno(): void{
+      var nuevoAlumno: any = {
+        "nombre": this.nombreAlumno,
+        "apellido": this.apellidoAlumno,
+        "matricula": this.matriculaAlumno
+      }
+      this.alumnos.push(nuevoAlumno)
+    }
 }

@@ -1,4 +1,21 @@
-<ion-grid>
+<ion-grid class="con-bg">
+    <ion-row id="registroAlumno">
+        <ion-col size="12">
+            <ion-label>Nombre:</ion-label> {{nombreAlumno}}
+            <ion-input id="nombre" placeholder="Ejemplo: José" [(ngModel)]="nombreAlumno" ></ion-input>
+        </ion-col>        
+        <ion-col size="12">
+            <ion-label>Apellido:</ion-label> {{apellidoAlumno}}
+            <ion-input id="apellido" placeholder="Ejemplo: Cano"  [(ngModel)]="apellidoAlumno"></ion-input>
+        </ion-col>  
+        <ion-col size="12">
+            <ion-label>Matrícula:</ion-label> {{matriculaAlumno}}
+            <ion-input id="matricula" placeholder="Ejemplo: 1914713"  [(ngModel)]="matriculaAlumno"></ion-input>
+        </ion-col>
+        <ion-col size="12">
+            <ion-button (click)="agregarAlumno()">Agregar Alumno</ion-button>
+        </ion-col>
+    </ion-row>
     <ion-row *ngFor="let alumno of alumnos">
         <ion-col>
             <ion-card>
