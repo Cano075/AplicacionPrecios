@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-body, ion-content, ion.content > *{
-    background-color: #ffffff !important;
+:root{
+    --ion-background-color: #28bccfd5;
+    --ion-text-color: #000000;
+    --ion-item-color: #000000;
+    --ion-item-border-color: #00000036;
+
+}
+
+.my-custom-class .action-sheet-group {
+    background: #e5e5e5;
 }

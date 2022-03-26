@@ -10,12 +10,14 @@ import { FormsModule } from '@angular/forms';
 import { RoutesModule } from './routes/routes.module';
 import { RouterModule } from '@angular/router';
 import { AlumnoDetalleComponent } from './alumno-detalle/alumno-detalle.component';
-
+import { ActionSheetComponent } from './action-sheet/action-sheet.component';
+import { ActionSheetController } from '@ionic/angular';
 @NgModule({
   declarations: [
     AppComponent,
     AlumnosComponent,
-    AlumnoDetalleComponent
+    AlumnoDetalleComponent,
+    ActionSheetComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,7 @@ import { AlumnoDetalleComponent } from './alumno-detalle/alumno-detalle.componen
     RoutesModule,
     IonicModule.forRoot()
   ],
-  providers: [],
+  providers: [ActionSheetController],
   bootstrap: [AppComponent],
   exports:[RoutesModule]
 })
