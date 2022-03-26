@@ -4,3 +4,10 @@
 
 /* To quickly generate your own theme, check out the color generator */
 /* https://ionicframework.com/docs/theming/color-generator */
+
+:root{
+    --ion-background-color: #1ab1c5d5;
+    --ion-text-color: #000000;
+    --ion-item-color: #000000;
+
+}

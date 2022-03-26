@@ -1,5 +1,5 @@
-<ion-grid class="con-bg">
-    <ion-row id="registroAlumno">
+<ion-grid class="con-bg" routerLink="">
+    <!--<ion-row id="registroAlumno">
         <ion-col size="12">
             <ion-label>Nombre:</ion-label> {{nombreAlumno}}
             <ion-input id="nombre" placeholder="Ejemplo: José" [(ngModel)]="nombreAlumno" ></ion-input>
@@ -47,5 +47,11 @@
                 </ion-card-content>
             </ion-card>
         </ion-col>
-    </ion-row>
+    </ion-row>-->
+    <ion-list>
+         <ion-item *ngFor="let alumno of alumnos" [routerLink]="['/alumno-detalle', alumno.matricula]">
+            <img src="assets/imagenes/logo-fcfm.png" alt="" width="80 px">
+            <ion-label >{{alumno.nombre}}</ion-label>
+         </ion-item>
+    </ion-list>
 </ion-grid>

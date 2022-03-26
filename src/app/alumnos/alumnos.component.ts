@@ -1,4 +1,5 @@
 import { Component, OnInit , Input} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-alumnos',
@@ -11,24 +12,24 @@ export class AlumnosComponent implements OnInit {
 
   alumnos = [
     {
-      "nombre": "Abraham",
-      "apellido": "Ramirez",
-      "matricula": "ABC123"
+      "nombre": "José Antonio",
+      "apellido": "Cano Jaramillo",
+      "matricula": "ABC125"
     },
     {
-      "nombre": "Abraham",
-      "apellido": "Ramirez",
-      "matricula": "ABC123"
+      "nombre": "Braulio",
+      "apellido": "Cantú de la Garza",
+      "matricula": "ABC143"
     },
     {
-      "nombre": "Abraham",
-      "apellido": "Ramirez",
-      "matricula": "ABC123"
+      "nombre": "Sebastián",
+      "apellido": "Córdova Ramírez",
+      "matricula": "ABC243"
     },
     {
-        "nombre": "Abraham",
-        "apellido": "Ramirez",
-        "matricula": "ABC123"
+        "nombre": "Alejandra",
+        "apellido": "Ochoa Castillo",
+        "matricula": "ABC873"
     }
   ]
   ngOnInit(): void {

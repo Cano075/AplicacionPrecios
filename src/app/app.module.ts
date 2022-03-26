@@ -7,19 +7,25 @@ import { IonicModule } from '@ionic/angular';
 import { AlumnosComponent } from './alumnos/alumnos.component';
 import { FormsModule } from '@angular/forms';
 
+import { RoutesModule } from './routes/routes.module';
+import { RouterModule } from '@angular/router';
+import { AlumnoDetalleComponent } from './alumno-detalle/alumno-detalle.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AlumnosComponent
+    AlumnosComponent,
+    AlumnoDetalleComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    RoutesModule,
     IonicModule.forRoot()
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports:[RoutesModule]
 })
 export class AppModule { }
