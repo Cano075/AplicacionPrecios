@@ -12,6 +12,8 @@ import { RouterModule } from '@angular/router';
 import { AlumnoDetalleComponent } from './alumno-detalle/alumno-detalle.component';
 import { ActionSheetComponent } from './action-sheet/action-sheet.component';
 import { ActionSheetController } from '@ionic/angular';
+import { HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +26,7 @@ import { ActionSheetController } from '@ionic/angular';
     AppRoutingModule,
     FormsModule,
     RoutesModule,
+    HttpClientModule,
     IonicModule.forRoot()
   ],
   providers: [ActionSheetController],

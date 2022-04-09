@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AlumnosComponent } from '../alumnos/alumnos.component';
 
 const rutas: Routes = [
-  { path: 'alumno-detalle/:id', component: AlumnoDetalleComponent },
+  { path: 'alumno-detalle/:index', component: AlumnoDetalleComponent },
   { path: '', component: AlumnosComponent}
 ]
 

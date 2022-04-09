@@ -49,8 +49,8 @@
         </ion-col>
     </ion-row>-->
     <ion-list>
-        <ion-item-sliding  *ngFor="let alumno of alumnos" [routerLink]="['/alumno-detalle', alumno.matricula]" class="color">
-            <ion-item>
+        <ion-item-sliding  *ngFor="let alumno of alumnos; let index=index"  class="color">
+            <ion-item [routerLink]="['/alumno-detalle', index]">
                 <img src="assets/imagenes/logo-fcfm.png" alt="" width="80 px" class="logo">
                 <ion-label>{{alumno.nombre}}</ion-label>
             </ion-item>

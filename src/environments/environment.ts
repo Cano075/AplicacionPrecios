@@ -3,9 +3,24 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
-};
+  production: false,
+  firebaseConfig: {
+    apiKey: "AIzaSyAtSuyQOVz1B7zDYxGfxbJj7n525O5A6KY",
+    authDomain: "alumnos-59d84.firebaseapp.com",
+    projectId: "alumnos-59d84",
+    storageBucket: "alumnos-59d84.appspot.com",
+    messagingSenderId: "1025533569933",
+    appId: "1:1025533569933:web:11fca74014dafc0933abc4"
+    }
+  };
 
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+// Your web app's Firebase configuration
+// Initialize Firebase
+// const app = initializeApp(firebaseConfig);
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

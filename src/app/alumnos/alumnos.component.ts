@@ -1,5 +1,7 @@
 import { Component, OnInit , Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { DatabaseService } from '../database.service';
 
 @Component({
   selector: 'app-alumnos',
@@ -8,31 +10,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AlumnosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private db: DatabaseService) { }
 
-  alumnos = [
-    {
-      "nombre": "José Antonio",
-      "apellido": "Cano Jaramillo",
-      "matricula": "ABC125"
-    },
-    {
-      "nombre": "Braulio",
-      "apellido": "Cantú de la Garza",
-      "matricula": "ABC143"
-    },
-    {
-      "nombre": "Sebastián",
-      "apellido": "Córdova Ramírez",
-      "matricula": "ABC243"
-    },
-    {
-        "nombre": "Alejandra",
-        "apellido": "Ochoa Castillo",
-        "matricula": "ABC873"
-    }
-  ]
+ alumnos: any=[];
   ngOnInit(): void {
+   this.consultaAlumnos();
   }
 
     @Input() nombreAlumno: string=""
@@ -47,4 +29,11 @@ export class AlumnosComponent implements OnInit {
       }
       this.alumnos.push(nuevoAlumno)
     }
+
+    consultaAlumnos(){
+      this.db.getAlumnos().subscribe(res=>{
+        this.alumnos=res;
+      });
+    }
+    
 }

@@ -1,5 +1,7 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { DatabaseService } from '../database.service';
 
 @Component({
   selector: 'app-alumno-detalle',
@@ -8,53 +10,35 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AlumnoDetalleComponent implements OnInit, OnChanges {
 
-  constructor(private ruta: ActivatedRoute) { }
+  constructor(private ruta: ActivatedRoute, private db: DatabaseService) { }
 
   ngOnInit(): void {
-    this.getAlumnoDetalle(this.matricula);
+    //this.getAlumnoDetalle(this.matricula);
+    this.getAlumno(this.id);
   }
 
   ngOnChanges(): void{
-    this.getAlumnoDetalle(this.matricula);
+    //this.getAlumnoDetalle(this.matricula);
   }
 
-  alumnos=[
-    {
-      "nombre": "José Antonio",
-      "apellido": "Cano Jaramillo",
-      "matricula": "ABC125"
-    },
-    {
-      "nombre": "Braulio",
-      "apellido": "Cantú de la Garza",
-      "matricula": "ABC143"
-    },
-    {
-      "nombre": "Sebastián",
-      "apellido": "Córdova Ramírez",
-      "matricula": "ABC243"
-    },
-    {
-        "nombre": "Alejandra",
-        "apellido": "Ochoa Castillo",
-        "matricula": "ABC873"
-    }
-  ]
-
+  id: number = this.ruta.snapshot.params['index'];
 
   alumnoDetalle: any={
-
   }
 
   matricula: string=this.ruta.snapshot.params['id'];
 
-  getAlumnoDetalle(matricula: string): any{
+  /* getAlumnoDetalle(matricula: string): any{
     for(let i=0; i<this.alumnos.length; i++){
       if(this.alumnos[i].matricula==this.matricula){
         this.alumnoDetalle=this.alumnos[i];
       }
     }
     return this.alumnoDetalle;
+  } */
+  getAlumno(id: number){
+    this.db.getAlumno(id).subscribe(res =>{
+      this.alumnoDetalle=res;
+    });
   }
-
 }
