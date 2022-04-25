@@ -49,8 +49,8 @@
         </ion-col>
     </ion-row>-->
     <ion-list>
-        <ion-item-sliding  *ngFor="let alumno of alumnos; let index=index"  class="color">
-            <ion-item [routerLink]="['/alumno-detalle', index]">
+        <ion-item-sliding  *ngFor="let alumno of alumnos; let id=index"  class="color">
+            <ion-item [routerLink]="['/alumno-detalle', id]">
                 <img src="assets/imagenes/logo-fcfm.png" alt="" width="80 px" class="logo">
                 <ion-label>{{alumno.nombre}}</ion-label>
             </ion-item>
@@ -61,10 +61,10 @@
               </ion-item-options>
               <ion-item-options side="end">
                 <ion-item-option color="danger">
-                  <ion-icon slot="icon-only" name="trash"></ion-icon>
+                  <ion-icon slot="icon-only" name="trash" (click)="eliminar(id, alumno)"></ion-icon>
                 </ion-item-option>
                 <ion-item-option>
-                  <ion-icon slot="icon-only" name="star"></ion-icon>
+                  <ion-icon slot="icon-only" name="create-outline"></ion-icon>
                 </ion-item-option>
               </ion-item-options>
             </ion-item-sliding>
