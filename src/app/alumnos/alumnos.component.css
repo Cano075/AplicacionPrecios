@@ -5,3 +5,7 @@
 .color{ 
     --background:rgb(241, 238, 234);
 }
+
+.boton{
+    --background: blueviolet;
+}

@@ -1,14 +1,20 @@
 
 <ion-card class="color">
-    <ion-card-header><strong>Detalle de Alumno:</strong> </ion-card-header>
+    <ion-card-header class="header"><strong>Detalle de Alumno:</strong> </ion-card-header>
     <ion-card-content>
         <p>Nombre: <strong>{{alumnoDetalle.nombre}}</strong></p>
         <p>Apellidos: <strong>{{alumnoDetalle.apellido}}</strong></p>
         <p>Matricula: <strong>{{alumnoDetalle.matricula}}</strong></p>
     </ion-card-content>
 </ion-card>
-<ion-button (click)="presentActionSheet()">Opciones</ion-button>
-<ion-button routerLink="">Regresar</ion-button>
+<ion-row>
+    <div class="a">
+        <ion-button expand="block" class="boton" (click)="presentActionSheet()">Opciones</ion-button>
+    </div>
+    <div class="a">
+        <ion-button expand="block" class="boton" routerLink="">Regresar</ion-button>
+    </div>
+</ion-row>
 <ion-card *ngIf="editando">
     <ion-card-header>Editar Alumno</ion-card-header>
     <ion-card-content>
@@ -40,7 +46,7 @@
                     </ion-label>
                 </ion-col>
                 <ion-col>
-                    <ion-input [(ngModel)]="alumnoEditado.matricula" placeholder="Ejemplo: Zamora"></ion-input>
+                    <ion-input [(ngModel)]="alumnoEditado.matricula" placeholder="Ejemplo: 1234567"></ion-input>
                 </ion-col>
             </ion-row>
             <ion-row>

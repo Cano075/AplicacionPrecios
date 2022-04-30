@@ -22,12 +22,11 @@ export class AlumnoDetalleComponent implements OnInit, OnChanges {
     //this.getAlumnoDetalle(this.matricula);
   }
 
-  id: number = this.ruta.snapshot.params['index'];
+  id: string = this.ruta.snapshot.params['index'];
 
   alumnoDetalle: any={
   }
 
-  matricula: string=this.ruta.snapshot.params['id'];
 
   editando = false;
 
@@ -43,7 +42,7 @@ export class AlumnoDetalleComponent implements OnInit, OnChanges {
     }
     return this.alumnoDetalle;
   } */
-  getAlumno(id: number){
+  getAlumno(id: string){
     this.db.getAlumno(id).subscribe(res =>{
       this.alumnoDetalle=res;
     });
@@ -53,7 +52,6 @@ export class AlumnoDetalleComponent implements OnInit, OnChanges {
     nombre: "",
     matricula: "",
     apellido: ""
-
   }
 
   guardar(){

@@ -1,56 +1,47 @@
 <ion-grid class="con-bg" routerLink="">
-    <!--<ion-row id="registroAlumno">
-        <ion-col size="12">
-            <ion-label>Nombre:</ion-label> {{nombreAlumno}}
-            <ion-input id="nombre" placeholder="Ejemplo: José" [(ngModel)]="nombreAlumno" ></ion-input>
-        </ion-col>        
-        <ion-col size="12">
-            <ion-label>Apellido:</ion-label> {{apellidoAlumno}}
-            <ion-input id="apellido" placeholder="Ejemplo: Cano"  [(ngModel)]="apellidoAlumno"></ion-input>
-        </ion-col>  
-        <ion-col size="12">
-            <ion-label>Matrícula:</ion-label> {{matriculaAlumno}}
-            <ion-input id="matricula" placeholder="Ejemplo: 1914713"  [(ngModel)]="matriculaAlumno"></ion-input>
-        </ion-col>
-        <ion-col size="12">
-            <ion-button (click)="agregarAlumno()">Agregar Alumno</ion-button>
-        </ion-col>
-    </ion-row>
-    <ion-row *ngFor="let alumno of alumnos">
-        <ion-col>
-            <ion-card>
-                <ion-card-content>
-                    <ion-grid>
-                        <ion-row>
-                            <ion-col>
-                                <ion-grid >
-                                    <ion-row>
-                                        <ion-col sizeLg="4" size="12">Nombre:</ion-col>
-                                        <ion-col sizeLg="4" size="12"><strong>{{alumno.nombre}}</strong></ion-col>
-                                    </ion-row>
-                                    <ion-row>
-                                        <ion-col sizeLg="4" size="12">Apellido:</ion-col>
-                                        <ion-col sizeLg="4" size="12"><strong>{{alumno.apellido}}</strong></ion-col>
-                                    </ion-row>
-                                    <ion-row>
-                                        <ion-col sizeLg="4" size="12">Matricula:</ion-col>
-                                        <ion-col sizeLg="4" size="12"><strong>{{alumno.matricula}}</strong></ion-col>
-                                    </ion-row>
-                                </ion-grid>
-                            </ion-col>
-                            <ion-col class="logo">
-                                <img src="assets/imagenes/logo-fcfm.png" alt="" width="120px">
-                            </ion-col>
-
-                        </ion-row>
-                    </ion-grid>
-                </ion-card-content>
-            </ion-card>
-        </ion-col>
-    </ion-row>-->
+    <ion-card color="light">
+        <ion-card-header>Agregar Alumno</ion-card-header>
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="3">
+                        <ion-label>
+                            Nombre:
+                        </ion-label>
+                    </ion-col>
+                    <ion-col>
+                        <ion-input  [(ngModel)]="nuevoAlumno.nombre" placeholder="Ejemplo: Alondra Berenice"></ion-input>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="3">
+                        <ion-label>
+                            Apellido:
+                        </ion-label>
+                    </ion-col>
+                    <ion-col>
+                        <ion-input [(ngModel)]="nuevoAlumno.apellido" placeholder="Ejemplo: Zamora"></ion-input>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="3">
+                        <ion-label>
+                            Matrícula:
+                        </ion-label>
+                    </ion-col>
+                    <ion-col>
+                        <ion-input [(ngModel)]="nuevoAlumno.matricula" placeholder="Ejemplo: 1234567"></ion-input>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-button class="boton" (click)="agregarAlumno(nuevoAlumno)">Guardar</ion-button>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
     <ion-list>
-        <ion-item-sliding  *ngFor="let alumno of alumnos; let id=index"  class="color">
-            <ion-item [routerLink]="['/alumno-detalle', id]">
+        <ion-item-sliding  *ngFor="let alumno of alumnos; let aux=index"  class="color">
+            <ion-item [routerLink]="['/alumno-detalle', llaves[aux]]">
                 <img src="assets/imagenes/logo-fcfm.png" alt="" width="80 px" class="logo">
                 <ion-label>{{alumno.nombre}}</ion-label>
             </ion-item>
@@ -61,7 +52,7 @@
               </ion-item-options>
               <ion-item-options side="end">
                 <ion-item-option color="danger">
-                  <ion-icon slot="icon-only" name="trash" (click)="eliminar(id, alumno)"></ion-icon>
+                  <ion-icon slot="icon-only" name="trash" (click)="eliminar(llaves[aux], alumno)"></ion-icon>
                 </ion-item-option>
                 <ion-item-option>
                   <ion-icon slot="icon-only" name="create-outline"></ion-icon>

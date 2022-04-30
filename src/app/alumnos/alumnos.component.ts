@@ -31,27 +31,38 @@ export class AlumnosComponent implements OnInit, OnChanges {
     @Input() apellidoAlumno: string=""
     @Input() matriculaAlumno: string=""
 
-    agregarAlumno(): void{
-      var nuevoAlumno: any = {
-        "nombre": this.nombreAlumno,
-        "apellido": this.apellidoAlumno,
-        "matricula": this.matriculaAlumno
-      }
-      this.alumnos.push(nuevoAlumno)
+    nuevoAlumno: any = {
+      nombre: "",
+      apellido: "",
+      matricula: ""
+    }
+
+    agregarAlumno(nuevoAlumno: any): void{
+      this.db.agregarAlumno(nuevoAlumno).subscribe();
     }
 
     status: boolean=false;
 
+    llaves:any=[]
+
     consultaAlumnos(){
       this.db.getAlumnos().subscribe(res=>{
-        this.alumnos=res;
+        const alumnosRes: any= res;
+        const alumnosArray=Object.keys(res).forEach((key:any)=>{
+          console.log(key);
+          (this.alumnos).push(alumnosRes[key]);
+        })
+        this.llaves=Object.keys(res);
       });
+      
+      
       
     }
 
-    eliminar(id:number, alumnoBorrar: any){
+    eliminar(id:string, alumnoBorrar: any){
       this.status=false;
-      for(var x=id; x<this.alumnos.length; x++){
+      //this was for array case
+      /*for(var x=id; x<this.alumnos.length; x++){
         //console.log('x: '+ x+' '+this.alumnos[x]);
         this.db.actualizarAlumno(x,this.alumnos[1+x]).subscribe();
         //console.log('x+1: '+x+' '+this.alumnos[x+1]);
@@ -65,7 +76,8 @@ export class AlumnosComponent implements OnInit, OnChanges {
             //window.location.reload();
           },500);
         }
-      }
+      }*/
+      this.db.borrarAlumno(id).subscribe();
     }
 
 }
