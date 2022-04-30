@@ -51,11 +51,6 @@ export class AlumnosComponent implements OnInit, OnChanges {
 
     eliminar(id:number, alumnoBorrar: any){
       this.status=false;
-      /*this.db.borrarAlumno(id).subscribe(res=>{
-        console.log('Finished')
-        this.status=true;
-      });
-      */
       for(var x=id; x<this.alumnos.length; x++){
         //console.log('x: '+ x+' '+this.alumnos[x]);
         this.db.actualizarAlumno(x,this.alumnos[1+x]).subscribe();
