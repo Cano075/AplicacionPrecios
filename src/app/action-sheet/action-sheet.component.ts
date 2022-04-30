@@ -34,13 +34,20 @@ export class ActionSheetComponent implements OnInit {
         handler: () => {
           console.log('Share clicked');
         }
-      },  {
+      }, {
+        text: 'Editar',
+        icon: 'create',
+        data: 10,
+        handler: () => {
+          console.log('Share clicked');
+        }
+      }, {
         text: 'Cancelar',
         icon: 'close',
         role: 'cancel',
         handler: () => {
           console.log('Cancel clicked');
-        }
+        } 
       }]
     });
     await actionSheet.present();
