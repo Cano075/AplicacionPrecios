@@ -14,6 +14,8 @@ import { ActionSheetComponent } from './action-sheet/action-sheet.component';
 import { ActionSheetController } from '@ionic/angular';
 import { HttpClientModule} from '@angular/common/http';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,8 @@ import { HttpClientModule} from '@angular/common/http';
     FormsModule,
     RoutesModule,
     HttpClientModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [ActionSheetController],
   bootstrap: [AppComponent],

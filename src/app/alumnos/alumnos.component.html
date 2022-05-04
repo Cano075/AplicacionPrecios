@@ -1,44 +1,50 @@
+<ion-app>
+    <ion-content>
+
 <ion-grid class="con-bg" routerLink="">
     <ion-card color="light">
         <ion-card-header>Agregar Alumno</ion-card-header>
         <ion-card-content>
             <ion-grid>
-                <ion-row>
-                    <ion-col size="3">
-                        <ion-label>
-                            Nombre:
-                        </ion-label>
-                    </ion-col>
-                    <ion-col>
-                        <ion-input  [(ngModel)]="nuevoAlumno.nombre" placeholder="Ejemplo: Alondra Berenice"></ion-input>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col size="3">
-                        <ion-label>
-                            Apellido:
-                        </ion-label>
-                    </ion-col>
-                    <ion-col>
-                        <ion-input [(ngModel)]="nuevoAlumno.apellido" placeholder="Ejemplo: Zamora"></ion-input>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col size="3">
-                        <ion-label>
-                            Matrícula:
-                        </ion-label>
-                    </ion-col>
-                    <ion-col>
-                        <ion-input [(ngModel)]="nuevoAlumno.matricula" placeholder="Ejemplo: 1234567"></ion-input>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-button class="boton" (click)="agregarAlumno(nuevoAlumno)">Guardar</ion-button>
-                </ion-row>
+                <form novalidate [formGroup]="datos">
+                    <ion-row>
+                        <ion-col size="3">
+                            <ion-label>
+                                Nombre:
+                            </ion-label>
+                        </ion-col>
+                        <ion-col>
+                            <ion-input  formControlName="nombre" placeholder="Ejemplo: Alondra Berenice"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="3">
+                            <ion-label>
+                                Apellido:
+                            </ion-label>
+                        </ion-col>
+                        <ion-col>
+                            <ion-input formControlName="apellido" placeholder="Ejemplo: Zamora"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="3">
+                            <ion-label>
+                                Matrícula:
+                            </ion-label>
+                        </ion-col>
+                        <ion-col>
+                            <ion-input formControlName="matricula" placeholder="Ejemplo: 1234567"></ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-button type="submit" [disabled]="datos.invalid" class="boton" (click)="agregarAlumno()">Guardar</ion-button>
+                    </ion-row>
+                </form>
             </ion-grid>
         </ion-card-content>
     </ion-card>
+
     <ion-list>
         <ion-item-sliding  *ngFor="let alumno of alumnos; let aux=index"  class="color">
             <ion-item [routerLink]="['/alumno-detalle', llaves[aux]]">
@@ -62,3 +68,6 @@
 
     </ion-list>
 </ion-grid>
+        
+</ion-content>
+</ion-app>
