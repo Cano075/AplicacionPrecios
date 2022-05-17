@@ -9,3 +9,7 @@
 .boton{
     --background: blueviolet;
 }
+
+#buscarContainer{
+    background: rgb(255, 255, 255);
+}

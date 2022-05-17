@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { DatabaseService } from '../database.service';
 import { ThisReceiver } from '@angular/compiler';
 import { FormControl, Validators, FormGroup} from '@angular/forms';
-
+import { Alumno } from '../models/alumno';
 @Component({
   selector: 'app-alumnos',
   templateUrl: './alumnos.component.html',
@@ -17,16 +17,34 @@ export class AlumnosComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
   }
 
- alumnos: any=[];
+ alumnos: Alumno[]=[];
  buffer: any=[];
  datos: any= {
   nombre: "",
   apellido: "",
   matricula: ""
 }
-  ngOnInit(): void {
-    this.desplegarLista();
 
+
+ALUMNOS: Alumno[]=[]; //arreglo ordenado
+private alumnoBuscado: string ="";
+
+get buscarAlumno(): string {
+  return this.alumnoBuscado;
+}
+buscaAlumno(filtrarPorNombre: string): Alumno[] {
+  filtrarPorNombre = filtrarPorNombre.toLocaleLowerCase();
+  return this.alumnos.filter((alumno: Alumno) => alumno.nombre.toLocaleLowerCase().includes(filtrarPorNombre));
+}
+set buscarAlumno(nombre: string){
+  this.alumnoBuscado = nombre;
+  this.ALUMNOS=this.buscaAlumno(nombre);
+  console.log(this.ALUMNOS);
+}
+  ngOnInit(): void {
+    this.consultaAlumnos();
+
+    
     
     this.datos=new FormGroup({
       nombre: new FormControl('', Validators.required),
@@ -66,12 +84,19 @@ export class AlumnosComponent implements OnInit, OnChanges {
           console.log(key);
           if(alumnosRes[key]!=null){
           (this.alumnos).push(alumnosRes[key]);
-           (this.llaves).push(key);
+          (this.llaves).push(key);
           }
         })
-        
+        for(let i=0; i<this.alumnos.length;i++){
+          this.alumnos[i].indice=this.llaves[i];
+        }
       });
-      console.log(this.llaves);
+      console.log(this.alumnos);
+      this.db.getAlumnos().subscribe(res=>{
+        const llaves=this.alumnos.forEach(element =>{
+          //this.alumnos[].indice=
+        })
+      });
       
     }
 
@@ -86,7 +111,13 @@ export class AlumnosComponent implements OnInit, OnChanges {
     }
 
     //
+    buscar($event: Event) { //evento de escribir en el input pero no hace la busqueda
+    console.log(this.buscarAlumno, "evento");
 
+
+    //this.$alumnos = this.alumnos.filter( nombreAlumno => nombreAlumno['nombre'].includes(this.hola))
+
+  }
     guardar(){
       /*this.db.agregarAlumno(this.nuevoAlumno).subscribe(res=>{
         console.log("Guardado");
