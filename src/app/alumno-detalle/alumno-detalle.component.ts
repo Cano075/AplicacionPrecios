@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { DatabaseService } from '../database.service';
 import { ActionSheetController } from '@ionic/angular';
+import { FormControl, Validators, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-alumno-detalle',
@@ -13,8 +14,18 @@ export class AlumnoDetalleComponent implements OnInit, OnChanges {
 
   constructor(private ruta: ActivatedRoute, private db: DatabaseService,public actionSheetController: ActionSheetController) { }
 
+  datos: any= {
+    nombre: "",
+    apellido: "",
+    matricula: ""
+  }
   ngOnInit(): void {
     //this.getAlumnoDetalle(this.matricula);
+    this.datos=new FormGroup({
+      nombre: new FormControl('', Validators.required),
+      apellido: new FormControl('', Validators.required),
+      matricula: new FormControl('',[Validators.required, Validators.minLength(7), Validators.maxLength(7)])
+    });
     this.getAlumno(this.id);
   }
 
@@ -55,7 +66,7 @@ export class AlumnoDetalleComponent implements OnInit, OnChanges {
   }
 
   guardar(){
-    this.db.actualizarAlumno(this.id,this.alumnoEditado).subscribe(res=>{
+    this.db.actualizarAlumno(this.id,this.datos.value).subscribe(res=>{
       console.log(res);
     })
     this.editando=false;

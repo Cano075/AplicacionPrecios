@@ -42,7 +42,7 @@ set buscarAlumno(nombre: string){
   console.log(this.ALUMNOS);
 }
   ngOnInit(): void {
-    this.consultaAlumnos();
+    this.desplegarLista();
 
     
     
@@ -84,6 +84,7 @@ set buscarAlumno(nombre: string){
           console.log(key);
           if(alumnosRes[key]!=null){
           (this.alumnos).push(alumnosRes[key]);
+          (this.ALUMNOS).push(alumnosRes[key]);
           (this.llaves).push(key);
           }
         })
@@ -111,13 +112,7 @@ set buscarAlumno(nombre: string){
     }
 
     //
-    buscar($event: Event) { //evento de escribir en el input pero no hace la busqueda
-    console.log(this.buscarAlumno, "evento");
-
-
-    //this.$alumnos = this.alumnos.filter( nombreAlumno => nombreAlumno['nombre'].includes(this.hola))
-
-  }
+    
     guardar(){
       /*this.db.agregarAlumno(this.nuevoAlumno).subscribe(res=>{
         console.log("Guardado");
